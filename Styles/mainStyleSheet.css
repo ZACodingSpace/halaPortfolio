@@ -1,4 +1,5 @@
 :root {
+    --main-color: #323232;
     --secondary-color: #BDA28F;
 }
 
@@ -14,7 +15,6 @@
     font-family: 'Almarai', sans-serif;
     color: var(--secondary-color);
     text-decoration: none;
-    list-style: none;
 }
 
 body {
@@ -127,79 +127,170 @@ body {
 }
 
 .services-section .container .services-container {
-    gap: 20px;
+    gap: 50px;
 }
 
-.services-section .container .services-container .service {
+.services-section .container .services-container .pocket-container {
+    position: relative;
     width: 150px;
     height: 150px;
-    position: relative;
-    box-shadow: 0 0 5px #000;
-    overflow: hidden;
 }
 
-.services-section .container .services-container .service::before,
-.services-section .container .services-container .service::after {
+.services-section .container .services-container .pocket-container .service-stamp {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    box-shadow: 0 0 5px #000;
+    overflow: hidden;
+    background-image: url("../Images/mainBackground.png");
+}
+
+.services-section .container .services-container .pocket-container .service-stamp::before,
+.services-section .container .services-container .pocket-container .service-stamp::after {
     content: "";
     position: absolute;
     top: 0;
     bottom: -50%;
     box-shadow: 0 0 3px #000;
-
+    background-image: url("../Images/mainBackground.png");
+    z-index: 3;
 }
 
-.services-section .container .services-container .service::before {
+.services-section .container .services-container .pocket-container .service-stamp::before {
     left: -15%;
     right: 40.5%;
     transform: rotate(-45deg);
 }
 
-.services-section .container .services-container .service::after {
+.services-section .container .services-container .pocket-container .service-stamp::after {
     left: 40.5%;
     right: -15%;
     transform: rotate(45deg);
-    background-image: url("../Images/mainBackground.png");
 }
 
-.services-section .container .services-container .service .service-name::after {
-    content: "";
-    width: 73px;
-    height: 73px;
+.services-section .container .services-container .pocket-container .service-stamp .service-name {
+    width: 70px;
+    height: 70px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    border: 2px solid var(--secondary-color);
-    z-index: 5;
-}
-
-.services-section .container .services-container .service .service-name {
-    width: 75px;
-    height: 75px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    color: var(--secondary-color);
+    color: var(--main-color);
     text-align: center;
     font-size: 11px;
-    mix-blend-mode: difference;
-    box-shadow: inset 1px 1px 2px rgba(224, 224, 224, 0.5),
-        inset -1px -1px 2px rgba(224, 224, 224, 0.5),
-        inset 1px -1px 2px rgba(224, 224, 224, 0.5),
-        inset -1px 1px 2px rgba(224, 224, 224, 0.5),
-        2px 2px 3px rgba(224, 224, 224, 0.5),
-        -2px -2px 3px rgba(224, 224, 224, 0.5),
-        2px -2px 3px rgba(224, 224, 224, 0.5),
-        -2px 2px 3px rgba(224, 224, 224, 0.5);
-        z-index: 5;
+    z-index: 6;
 }
 
-.services-section .container .services-container .service .service-background {
+.services-section .container .services-container .pocket-container .service-stamp .service-background {
     width: 90px;
+    height: 90px;
     position: relative;
+    background-image: url("../Images/mainBackground.png");
+    z-index: 5;
+    border-radius: 50%;
+}
+
+.services-section .container .services-container .pocket-container .service-stamp .service-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("../Images/Group000.svg");
+    background-position: center;
+    background-size: 100%;
     mix-blend-mode: difference;
     z-index: 5;
-} 
+}
+
+.services-section .container .services-container .pocket-container .service-stamp .service-background::after {
+    content: "";
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("../Images/Ellipse153.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    box-shadow: inset 2px 2px 2px rgba(236, 210, 189, 0.7),
+        inset -2px -2px 2px rgba(236, 210, 189, 0.7),
+        inset 2px -2px 2px rgba(236, 210, 189, 0.7),
+        inset -2px 2px 2px rgba(236, 210, 189, 0.7),
+        0.5px 0.5px 1px rgba(236, 210, 189, 0.7),
+        -0.5px -0.5px 1px rgba(236, 210, 189, 0.7),
+        0.5px -0.5px 1px rgba(236, 210, 189, 0.7),
+        -0.5px 0.5px 1px rgba(236, 210, 189, 0.7);
+    mix-blend-mode: difference;
+    z-index: 5;
+}
+
+.services-section .container .services-container .pocket-container .cards-container {
+
+    position: absolute;
+    width: 90%;
+    max-height: 100%;
+    left: 50%;
+    top: -10%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    padding: 1rem;
+    overflow: hidden;
+    background-image: url("../Images/secondaryBackground.png");
+}
+
+.services-section .container .services-container .pocket-container .cards-container .service-card,
+.services-section .container .services-container .pocket-container .cards-container .service-card .inner-service-card {
+    font-size: 10px;
+    list-style: circle;
+    color: #000;
+    position: relative;
+}
+
+.services-section .container .services-container .pocket-container .cards-container .service-card .inner-service-card {
+    padding-right: 0.5rem;
+    list-style-position: inside;
+}
+
+.services-section .container .services-container .pocket-container .cards-container .service-card:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+ul.service-card::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: -11.5px;
+    width: 2px;
+    height: 2px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    list-style: circle;
+}
+
+.services-section .container .services-container .pocket-container:hover .cards-container {
+
+    animation: show-card 2s ease-in-out normal forwards;
+}
+
+@keyframes show-card {
+
+    50% {
+        transform: translate(-50%, -100%);
+        max-height: fit-content;
+        overflow: visible;
+    }
+
+    100% {
+        z-index: 10;
+        bottom: 10%;
+        transform: translate(-50%, -20%);
+        max-height: fit-content;
+        overflow: visible;
+    }
+}
