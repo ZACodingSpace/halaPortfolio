@@ -1,0 +1,287 @@
+:root {
+    --main-color: #323232;
+    --secondary-color: #BDA28F;
+}
+
+* {
+
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Almarai', sans-serif;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    direction: rtl;
+    overscroll-behavior-inline: contain;
+}
+
+body main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../Images/secondaryBackground.png");
+}
+
+body main .container {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    padding: 8vw 4vw;
+}
+
+body main .vertical-container {
+    gap: min(20vw, 5vh);
+}
+
+body main .horizontal-container {
+    gap: max(10vw, 20vh);
+}
+
+/* ******************************Book****************************** */
+.book .book-container {
+    perspective: 2000px;
+}
+
+.book .horizontal-book-container {
+    position: relative;
+    width: min(80vw, 80vh);
+    height: min(45vw, 45vh);
+}
+
+.book .vertical-book-container {
+    position: relative;
+    width: min(45vw, 34vh);
+    height: min(80vw, 60vh);
+
+}
+
+.book .book-container .paper,
+.book .book-container .back-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.book .horizontal-book-container .paper {
+    top: 30%;
+    left: 0;
+    border-radius: 0 0 min(3vw, 2vh) min(3vw, 2vh);
+    cursor: pointer;
+    transform: rotateX(0);
+    transform-origin: top;
+    transition: transform 2s, z-index 2s;
+}
+
+.book .vertical-book-container .paper {
+    top: -5%;
+    left: 0;
+    border-radius: min(3vw, 2vh) 0 0 min(3vw, 2vh);
+    cursor: pointer;
+    transform: rotateY(0);
+    transform-origin: right;
+    transition: transform 2s, z-index 2s, left 2s;
+}
+
+.book .book-container .back-cover {
+    top: 30%;
+    left: 0;
+    border-radius: 0 0 min(3vw, 2vh) min(3vw, 2vh);
+    background-image: url("../Images/mainBackground.png");
+}
+
+.book .vertical-book-container .back-cover {
+    top: -5%;
+    left: 0;
+    border-radius: min(3vw, 2vh) 0 0 min(3vw, 2vh);
+    background-image: url("../Images/mainBackground.png");
+    transition: left 2s;
+}
+
+.book .horizontal-book-container .paper.flipped {
+
+    transform: rotateX(180deg);
+}
+
+.book .vertical-book-container .paper.flipped {
+
+    transform: rotateY(180deg);
+}
+
+.book .book-container .paper .front-page,
+.book .book-container .paper .back-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.book .horizontal-book-container .paper .front-page,
+.book .horizontal-book-container .paper .back-page,
+.book .vertical-book-container .paper .front-page,
+.book .vertical-book-container .paper .back-page {
+
+    transition: z-index 2s;
+}
+
+.book .book-container .paper .front-page {
+    background-image: url("../Images/mainBackground.png");
+    z-index: 1;
+    backface-visibility: hidden;
+}
+
+.book .book-container .paper .back-page {
+    background-image: url("../Images/fourthBackground.png");
+    z-index: 0;
+}
+
+.book .book-container .paper.flipped .back-page {
+    z-index: 1;
+}
+
+.book .horizontal-book-container .paper .front-page .content,
+.book .horizontal-book-container .paper .back-page .content {
+    width: 95%;
+    height: 90%;
+    border-radius: 0 0 min(3vw, 2vh) min(3vw, 2vh);
+}
+
+.book .vertical-book-container .paper .front-page .content,
+.book .vertical-book-container .paper .back-page .content {
+    width: 90%;
+    height: 95%;
+    border-radius: min(3vw, 2vh) 0 0 min(3vw, 2vh);
+}
+
+.book .book-container .front-page .title {
+    mix-blend-mode: difference;
+    position: relative;
+}
+
+.book .horizontal-book-container .front-page .title {
+    font-size: min(10vw, 10vh);
+}
+
+.book .vertical-book-container .front-page .title {
+    font-size: min(8vw, 6vh);
+}
+
+.book .book-container .front-page .title::after {
+    content: var(--content-variable);
+    position: absolute;
+    top: 0px;
+    left: 0;
+    color: transparent;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+    opacity: 0.3;
+}
+
+/* ******************************Scroll IMGs Bar****************************** */
+
+.scroll-img-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2vw;
+}
+
+.scroll-img-bar .samples {
+    display: flex;
+    gap: 2vw;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    overscroll-behavior-inline: contain;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, 0.9),
+        inset -10px 0 10px -10px rgba(0, 0, 0, 0.9);
+
+}
+
+.scroll-img-bar .samples::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-img-bar .samples img {
+    width: min(35vw, 18vh);
+    background-image: url("../Images/mainBackground.png");
+    padding: 5px;
+    cursor: pointer;
+}
+
+.scroll-img-bar .before-btn {
+    padding-right: 0.5rem;
+    transform: rotate(180deg);
+}
+
+.scroll-img-bar .after-btn {
+    padding-right: 0.5rem;
+    margin-top: -0.9rem;
+}
+
+.scroll-img-bar .before-btn div,
+.scroll-img-bar .after-btn div {
+    position: relative;
+    letter-spacing: -8px;
+    color: #825d43;
+    font-weight: bold;
+    font-family: 'Solitreo', cursive;
+    font-size: min(10vw, 5vh);
+    cursor: pointer;
+    transition: transform 1s;
+    /* Disable Text Selection 1:Safari 2:IE 10 and IE 11 3:Standard syntax*/
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.scroll-img-bar .before-btn:hover div {
+    animation: vibration-right-arrow 2s ease-in-out infinite;
+}
+
+.scroll-img-bar .after-btn:hover div {
+    animation: vibration-left-arrow 2s ease-in-out infinite;
+}
+
+.scroll-img-bar .before-btn span::after,
+.scroll-img-bar .after-btn span::after {
+    content: var(--direction);
+    position: absolute;
+    top: 0px;
+    left: 0;
+    color: transparent;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+    opacity: 0.3;
+}
+
+@keyframes vibration-right-arrow {
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes vibration-left-arrow {
+    50% {
+        transform: translateX(-5px);
+    }
+}

@@ -1,138 +1,118 @@
-// The Entry Animation for Elements Start
-let sections_titles = document.querySelectorAll(".slide-up");
-let contents_elements = document.querySelectorAll(".slide-in");
-let appearing_way = {
-    // threshhold: 1,
-    rootMargin: "0px 0px -100px 0px"
-};
-let appear_on_scroll = new IntersectionObserver(function (elements, appear_on_scroll) {
 
-    elements.forEach(element => {
-        if (!element.isIntersecting) {
-            return;
-        } else {
-            element.target.classList.add("appear");
-            appear_on_scroll.unobserve(element.target);
-        }
+//////////////////// Nav Section Start /////////////////////
+let menu = document.querySelector(".menu");
+let menu_icon = document.querySelector(".menu-icon");
+
+menu_icon.addEventListener("click", ()=>{
+
+    menu.classList.toggle("opened-menu");
+})
+//////////////////// Nav Section End /////////////////////
+
+//////////////////// About Section Start /////////////////////
+let tap_names = document.querySelectorAll(".tap-name");
+let tap_contents = document.querySelectorAll(".tap-content");
+
+function aboutTaps() {
+    tap_names.forEach(tap => {
+        tap.addEventListener("click", () => {
+
+            tap_names.forEach(unclickedTap => {
+                unclickedTap.classList.remove("clicked-tap");
+            })
+
+            tap.classList.add("clicked-tap")
+            
+            tap_contents.forEach(tap_content => {
+                tap_content.classList.remove("clicked-tap-content");
+            })
+            
+            let tap_type = tap.id;
+            switch (tap_type) {
+                case "informationTap":
+                    tap_contents[0].classList.add("clicked-tap-content");
+                    break;
+                case "experiencesTap":
+                    tap_contents[1].classList.add("clicked-tap-content");
+                    break;
+                case "certificationsTap":
+                    tap_contents[2].classList.add("clicked-tap-content");
+                    break;
+            }
+        })
     })
-}, appearing_way);
-
-sections_titles.forEach(title => {
-    appear_on_scroll.observe(title);
-})
-contents_elements.forEach(content_el => {
-    appear_on_scroll.observe(content_el);
-})
-// The Entry Animation for Elements End
-
-
-
-// Landing Section Scribts Start
-const order_array = [1, 2, 3, 4, 5];
-let accountant_div = document.querySelector(".accountant");
-let architect_div = document.querySelector(".architect");
-let lawyer_div = document.querySelector(".lawyer");
-let workers_div = document.querySelector(".workers");
-let delivery_div = document.querySelector(".delivery");
-
-order_array.sort((a, b) => 0.5 - Math.random());
-
-let count = 0;
-setInterval(functio1, 2000);
-
-function functio1() {
-
-    display_state(order_array[count]);
-    count++;
-
-    if (count == 5) {
-        count = 0;
-    }
 }
 
-function display_state(new_state) {
+aboutTaps();
+//////////////////// About Section End /////////////////////
 
-    switch (new_state) {
-        case 1:
-            accountant_div.style.display = "block";
-            architect_div.style.display = "none";
-            lawyer_div.style.display = "none";
-            workers_div.style.display = "none";
-            delivery_div.style.display = "none";
-            break;
-        case 2:
-            accountant_div.style.display = "none";
-            architect_div.style.display = "block";
-            lawyer_div.style.display = "none";
-            workers_div.style.display = "none";
-            delivery_div.style.display = "none";
-            break;
-        case 3:
-            accountant_div.style.display = "none";
-            architect_div.style.display = "none";
-            lawyer_div.style.display = "block";
-            workers_div.style.display = "none";
-            delivery_div.style.display = "none";
-            break;
-        case 4:
-            accountant_div.style.display = "none";
-            architect_div.style.display = "none";
-            lawyer_div.style.display = "none";
-            workers_div.style.display = "block";
-            delivery_div.style.display = "none";
-            break;
-        case 5:
-            accountant_div.style.display = "none";
-            architect_div.style.display = "none";
-            lawyer_div.style.display = "none";
-            workers_div.style.display = "none";
-            delivery_div.style.display = "block";
-            break;
-    }
+
+//////////////////// Protfolio Section Start /////////////////////
+//////////////////// Home Page /////////////////////
+
+let cards = document.querySelectorAll(".portfolio-card");
+let count = 1;
+
+function showImg() {
+
+    cards.forEach(card => {
+        card.addEventListener("mouseenter", () => {
+
+            let cardType = card.querySelector(".inside").getAttribute("content-type");
+            switch (cardType) {
+
+                case "certificate":
+                    checkIfImageExists(`Images/Portfolio/certificate${count}.jpg`, card, "certificate");
+                    break;
+
+                case "cv":
+                    checkIfImageExists(`Images/Portfolio/cv${count}.jpg`, card, "cv");
+                    break;
+
+                case "powerpoint":
+                    checkIfImageExists(`Images/Portfolio/powerpoint${count}.jpg`, card, "powerpoint");
+                    break;
+
+                case "infographic":
+                    checkIfImageExists(`Images/Portfolio/infographic${count}.jpg`, card, "infographic");
+                    break;
+
+                case "interactivePowerpoint":
+                    checkIfImageExists(`Images/Portfolio/interactivePowerpoint${count}.jpg`, card, "interactivePowerpoint");
+                    break;
+            }
+        })
+    });
 }
-// Landing Section Scribts End
 
+function checkIfImageExists(url, card, type) {
+    const img = new Image();
+    img.src = url;
 
-// Statistics Section Scribts Start
-let elements = document.querySelectorAll(".statistics-section .stat-num");
-let jobs_card = document.querySelector(".jobs");
-let companies_card = document.querySelector(".companies");
-let applies_card = document.querySelector(".applies");
-let opportunities_card = document.querySelector(".opportunities");
-
-window.onscroll = function () {
-
-    if (window.scrollY >= (jobs_card.offsetTop - 350)) {
-        counter(elements[0], 2);
-    }
-    if (window.scrollY >= (companies_card.offsetTop - 350)) {
-        counter(elements[1], 20);
-
-    }
-    if (window.scrollY >= (applies_card.offsetTop - 350)) {
-        counter(elements[2], 10);
-
-    }
-    if (window.scrollY >= (opportunities_card.offsetTop - 350)) {
-        counter(elements[3], 1);
-    }
-};
-
-function counter(element, increment) {
-
-    let updateCount = () => {
-        let data_goal = +element.getAttribute('data-goal');
-        let num = +element.innerText;
-
-        if (num < data_goal) {
-            element.innerText = num + increment;
-
-            setTimeout(updateCount, 100);
-        } else {
-            element.innerText = data_goal;
-        }
-    };
-
-    updateCount();
+    img.addEventListener("load", () => {
+        card.querySelector(".inside").innerHTML = `<img src="Images/Portfolio/${type}${count}.jpg" alt="">`;
+        count++;
+    })
+    img.addEventListener("error", () => {
+        card.querySelector(".inside").innerHTML = `<img src="Images/Portfolio/${type}1.jpg" alt="">`;
+        count = 1;
+    })
 }
-// Statistics Section Scribts End
+
+showImg();
+
+function redirectTo() {
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            localStorage.setItem("card_Type", card.id);
+            localStorage.setItem("num_of_imgs", card.getAttribute('num-of-imgs'));
+            window.location.href = "portfolio.html";
+        });
+    });
+}
+
+redirectTo();
+
+//////////////////// Protfolio Section End /////////////////////
+
