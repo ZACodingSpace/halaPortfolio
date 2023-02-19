@@ -593,6 +593,7 @@ body {
 .portfolio-section .container .cards-container .card .front-cover {
     transition: transform 2s;
     transform-origin: right;
+    text-align: center;
 }
 
 .portfolio-section .container .cards-container .card:nth-child(odd) .front-cover {

@@ -80,6 +80,14 @@ function showImg() {
                 case "interactivePowerpoint":
                     checkIfImageExists(`Images/Portfolio/interactivePowerpoint${count}.jpg`, card, "interactivePowerpoint");
                     break;
+
+                case "graphicDesign":
+                    checkIfImageExists(`Images/Portfolio/graphicDesign${count}.jpg`, card, "graphicDesign");
+                    break;
+
+                case "wordTemplate":
+                    checkIfImageExists(`Images/Portfolio/wordTemplate${count}.jpg`, card, "wordTemplate");
+                    break;
             }
         })
     });

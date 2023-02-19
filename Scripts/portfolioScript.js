@@ -15,6 +15,7 @@ function loadElements(elementType, img_counter) {
 
     switch (elementType) {
         case "certificate":
+            document.title = "الأعمال: شهادات"
             content_type = "img";
             img_type = "certificateEx";
             book_name = "شهادات";
@@ -23,6 +24,7 @@ function loadElements(elementType, img_counter) {
             break;
 
         case "cv":
+            document.title = "الأعمال: سير ذاتية"
             content_type = "img";
             img_type = "cvEx";
             book_name = "سيرة ذاتية";
@@ -31,6 +33,7 @@ function loadElements(elementType, img_counter) {
             break;
 
         case "powerpoint":
+            document.title = "الأعمال: بوربوينت"
             content_type = "video";
             img_type = "powerpoint";
             video_type = "powerpointVideo";
@@ -40,6 +43,7 @@ function loadElements(elementType, img_counter) {
             break;
 
         case "infographic":
+            document.title = "الأعمال: انفوجرافيك"
             content_type = "img";
             img_type = "infographicEx";
             book_name = "انفوجرافيك";
@@ -48,10 +52,30 @@ function loadElements(elementType, img_counter) {
             break;
 
         case "interactivePowerpoint":
+            document.title = "الأعمال: عروض تفاعلية"
             content_type = "video";
             img_type = "interactivePowerpoint";
             video_type = "interactivePowerpointVideo";
             book_name = "عروض تفاعلية";
+            potrtfolio_container.classList.add("horizontal-container");
+            book_container.classList.add("horizontal-book-container");
+            break;
+
+        case "graphicDesign":
+            document.title = "الأعمال: تصاميم جرافيك"
+            content_type = "img";
+            img_type = "graphicDesignEx";
+            book_name = "تصاميم جرافيك";
+            potrtfolio_container.classList.add("vertical-container");
+            book_container.classList.add("vertical-book-container");
+            break;
+
+        case "wordTemplate":
+            document.title = "الأعمال: قوالب وورد"
+            content_type = "video";
+            img_type = "wordTemplate";
+            video_type = "wordTemplateVideo";
+            book_name = "قوالب وورد";
             potrtfolio_container.classList.add("horizontal-container");
             book_container.classList.add("horizontal-book-container");
             break;
