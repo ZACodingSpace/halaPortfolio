@@ -64,7 +64,7 @@ function loadElements(elementType, img_counter) {
         case "graphicDesign":
             document.title = "الأعمال: تصاميم جرافيك"
             content_type = "img";
-            img_type = "graphicDesignEx";
+            img_type = "graphicDesign";
             book_name = "تصاميم جرافيك";
             potrtfolio_container.classList.add("vertical-container");
             book_container.classList.add("vertical-book-container");

@@ -1,9 +1,40 @@
 
 //////////////////// Nav Section Start /////////////////////
+let nav_element_container = document.querySelector("#navContainer");
+
+if(document.documentElement.scrollWidth > document.documentElement.clientWidth){
+    nav_element_container.classList.add("small");
+}
+
+function resizingScreen() {
+    let screen_width = window.innerWidth;
+
+    window.addEventListener("resize", () => {
+        let new_screen_width = window.innerWidth;
+
+        //Decrease
+        if (screen_width > new_screen_width) {
+            if(document.documentElement.scrollWidth > document.documentElement.clientWidth){
+                nav_element_container.classList.add("small");
+            }
+        } //Increase 
+        else {
+            nav_element_container.classList.remove("small");
+            if(document.documentElement.scrollWidth > document.documentElement.clientWidth){
+                nav_element_container.classList.add("small");
+            }
+        }
+        screen_width = window.innerWidth;
+    })
+}
+
+resizingScreen();
+
+
 let menu = document.querySelector(".menu");
 let menu_icon = document.querySelector(".menu-icon");
 
-menu_icon.addEventListener("click", ()=>{
+menu_icon.addEventListener("click", () => {
 
     menu.classList.toggle("opened-menu");
 })
@@ -22,11 +53,11 @@ function aboutTaps() {
             })
 
             tap.classList.add("clicked-tap")
-            
+
             tap_contents.forEach(tap_content => {
                 tap_content.classList.remove("clicked-tap-content");
             })
-            
+
             let tap_type = tap.id;
             switch (tap_type) {
                 case "informationTap":
@@ -123,4 +154,3 @@ function redirectTo() {
 redirectTo();
 
 //////////////////// Protfolio Section End /////////////////////
-
