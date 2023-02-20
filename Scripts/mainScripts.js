@@ -2,7 +2,7 @@
 //////////////////// Nav Section Start /////////////////////
 let nav_element_container = document.querySelector("#navContainer");
 
-if(document.documentElement.scrollWidth > document.documentElement.clientWidth){
+if (document.documentElement.scrollWidth > document.documentElement.clientWidth) {
     nav_element_container.classList.add("small");
 }
 
@@ -14,13 +14,13 @@ function resizingScreen() {
 
         //Decrease
         if (screen_width > new_screen_width) {
-            if(document.documentElement.scrollWidth > document.documentElement.clientWidth){
+            if (document.documentElement.scrollWidth > document.documentElement.clientWidth) {
                 nav_element_container.classList.add("small");
             }
         } //Increase 
         else {
             nav_element_container.classList.remove("small");
-            if(document.documentElement.scrollWidth > document.documentElement.clientWidth){
+            if (document.documentElement.scrollWidth > document.documentElement.clientWidth) {
                 nav_element_container.classList.add("small");
             }
         }
@@ -29,7 +29,6 @@ function resizingScreen() {
 }
 
 resizingScreen();
-
 
 let menu = document.querySelector(".menu");
 let menu_icon = document.querySelector(".menu-icon");
@@ -43,6 +42,7 @@ menu_icon.addEventListener("click", () => {
 //////////////////// About Section Start /////////////////////
 let tap_names = document.querySelectorAll(".tap-name");
 let tap_contents = document.querySelectorAll(".tap-content");
+let taps_stamp_container = document.querySelector(".taps-stamp-container");
 
 function aboutTaps() {
     tap_names.forEach(tap => {
@@ -70,6 +70,10 @@ function aboutTaps() {
                     tap_contents[2].classList.add("clicked-tap-content");
                     break;
             }
+            taps_stamp_container.classList.remove("appear");
+            setTimeout(()=>{
+                taps_stamp_container.classList.add("appear");
+            }, 100)
         })
     })
 }
