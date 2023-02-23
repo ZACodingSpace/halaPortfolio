@@ -233,6 +233,7 @@ body {
 .about-section .container .content-container {
     overflow-x: hidden;
 }
+
 .about-section .container .content-container .tap-names-container {
     justify-content: space-around;
     flex-wrap: nowrap;
@@ -294,7 +295,7 @@ body {
     font-size: min(5vw, 3vh);
     line-height: min(8vw, 5vh);
     transform: translateX(100vw);
-    animation: 1s ease-out 1 forwards  slide-left;
+    animation: 1s ease-out 1 forwards slide-left;
     animation-delay: var(--delay-variable);
 }
 
@@ -318,6 +319,7 @@ body {
 .about-section .container .content-container .taps-stamp-container {
     display: none;
 }
+
 .about-section .container .content-container .taps-stamp-container.appear {
     display: flex;
     width: min(30vw, 30vh);
@@ -326,7 +328,7 @@ body {
     align-items: center;
     justify-content: center;
     transform: translateX(-100vw);
-    animation: 1s ease-out 1 forwards  slide-right;
+    animation: 1s ease-out 1 forwards slide-right;
     /* animation-delay: var(--delay-variable); */
 
 }
@@ -766,4 +768,99 @@ body {
 .copy-right-section .copy-right span,
 .copy-right-section .programmer a {
     font-weight: bold;
+}
+
+
+/* ******************* */
+.portfolio-section .container .cards-container .card-holder {
+    position: relative;
+    width: min(80vw, 50vh);
+    height: min(45vw, 28vh);
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.portfolio-section .container .cards-container .card-holder:nth-child(even) {
+    height: min(80vw, 50vh);
+    width: min(45vw, 28vh);
+}
+
+.portfolio-section .container .cards-container .card-holder .portfolio-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    background: url("../Images/mainBackground.jpg"), var(--main-color);
+    transition: transform 2s;
+}
+
+.portfolio-section .container .cards-container .card-holder .portfolio-card.flip {
+    transform: rotateX(180deg);
+}
+.portfolio-section .container .cards-container .card-holder:nth-child(even) .portfolio-card.flip {
+    transform: rotateY(180deg);
+}
+
+.portfolio-section .container .cards-container .card-holder .portfolio-card .front-face,
+.portfolio-section .container .cards-container .card-holder .portfolio-card .back-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.portfolio-section .container .cards-container .card-holder .front-face {
+    text-align: center;
+}
+
+.portfolio-section .container .cards-container .card-holder .front-face .title {
+    position: relative;
+    font-size: min(8vw, 5vh);
+}
+.portfolio-section .container .cards-container .card-holder:nth-child(even) .front-face .title {
+    position: relative;
+    font-size: min(10vw, 5vh);
+}
+
+.portfolio-section .container .cards-container .card-holder .front-face .title::after {
+    content: var(--content-variable);
+    position: absolute;
+    top: 0px;
+    left: 0;
+    color: transparent;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+    opacity: 0.3;
+}
+
+.portfolio-section .container .cards-container .card-holder .back-face {
+    transform: rotateX(180deg);
+}
+.portfolio-section .container .cards-container .card-holder:nth-child(even) .back-face {
+    transform: rotateY(180deg);
+}
+
+.portfolio-section .container .cards-container .card-holder .back-face img {
+    width: 95%;
+    height: 90%;
+    animation: fade-in 10s ease-in-out;
+}
+
+.portfolio-section .container .cards-container .card-holder:nth-child(even) .back-face img {
+    width: 90%;
+    height: 95%;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
