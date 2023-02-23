@@ -85,7 +85,6 @@ aboutTaps();
 //////////////////// Protfolio Section Start /////////////////////
 //////////////////// Home Page /////////////////////
 
-// let cards_holder = document.querySelectorAll(".portfolio-card");
 let cards = document.querySelectorAll(".portfolio-card");
 let cards_front_face = document.querySelectorAll(".front-face");
 let cards_back_face = document.querySelectorAll(".back-face");
@@ -140,7 +139,7 @@ flipCard();
 
 function reflipCard() {
     document.addEventListener("click", (element) => {
-        if (element.target.classList[0] !== "front-face") {
+        if (!element.target.classList.contains("front-face") && !element.target.classList.contains("title")) {
             cards.forEach(card => {
                 card.classList.remove("flip");
             })
@@ -167,79 +166,17 @@ function showImg(num_of_imgs, img_type, card_num) {
     }
 }
 
+function redirectTo() {
 
+    cards_back_face.forEach(card => {
+        card.addEventListener("click", () => {
+            localStorage.setItem("card_Type", card.id.substring(0, card.id.length-4));
+            localStorage.setItem("num_of_imgs", card.getAttribute('num-of-imgs'));
+            window.location.href = "portfolio.html";
+        });
+    });
+}
 
-// ///////////////////////////////
-
-// let count = 1;
-
-// function showImg() {
-
-//     cards.forEach(card => {
-//         card.addEventListener("mouseenter", () => {
-
-//             let cardType = card.querySelector(".inside").getAttribute("content-type");
-//             switch (cardType) {
-
-//                 case "certificate":
-//                     checkIfImageExists(`Images/Portfolio/certificate${count}.jpg`, card, "certificate");
-//                     break;
-
-//                 case "cv":
-//                     checkIfImageExists(`Images/Portfolio/cv${count}.jpg`, card, "cv");
-//                     break;
-
-//                 case "powerpoint":
-//                     checkIfImageExists(`Images/Portfolio/powerpoint${count}.jpg`, card, "powerpoint");
-//                     break;
-
-//                 case "infographic":
-//                     checkIfImageExists(`Images/Portfolio/infographic${count}.jpg`, card, "infographic");
-//                     break;
-
-//                 case "interactivePowerpoint":
-//                     checkIfImageExists(`Images/Portfolio/interactivePowerpoint${count}.jpg`, card, "interactivePowerpoint");
-//                     break;
-
-//                 case "graphicDesign":
-//                     checkIfImageExists(`Images/Portfolio/graphicDesign${count}.jpg`, card, "graphicDesign");
-//                     break;
-
-//                 case "wordTemplate":
-//                     checkIfImageExists(`Images/Portfolio/wordTemplate${count}.jpg`, card, "wordTemplate");
-//                     break;
-//             }
-//         })
-//     });
-// }
-
-// function checkIfImageExists(url, card, type) {
-//     const img = new Image();
-//     img.src = url;
-
-//     img.addEventListener("load", () => {
-//         card.querySelector(".inside").innerHTML = `<img src="Images/Portfolio/${type}${count}.jpg" alt="">`;
-//         count++;
-//     })
-//     img.addEventListener("error", () => {
-//         card.querySelector(".inside").innerHTML = `<img src="Images/Portfolio/${type}1.jpg" alt="">`;
-//         count = 1;
-//     })
-// }
-
-// showImg();
-
-// function redirectTo() {
-
-//     cards.forEach(card => {
-//         card.addEventListener("click", () => {
-//             localStorage.setItem("card_Type", card.id);
-//             localStorage.setItem("num_of_imgs", card.getAttribute('num-of-imgs'));
-//             window.location.href = "portfolio.html";
-//         });
-//     });
-// }
-
-// redirectTo();
+redirectTo();
 
 //////////////////// Protfolio Section End /////////////////////

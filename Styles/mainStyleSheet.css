@@ -93,15 +93,16 @@ body {
 }
 
 .navbar .container {
-    padding-top: 2px;
+    padding-top: 10px;
     padding-bottom: 2px;
     height: 100%;
     justify-content: space-between;
     flex-wrap: nowrap;
 }
+/* margin-right: -2rem; */
 
 .navbar .container .logo {
-    height: 100%;
+    height: clamp(80%, 300px, 100%);
 }
 
 .navbar .container .logo img {
@@ -201,7 +202,7 @@ body {
 }
 
 .navbar .container.small .nav-elements .menu-icon svg {
-    font-size: 28px;
+    font-size: min(6vw, 4vh);
 }
 
 /* ******************************Landing Section****************************** */
@@ -237,13 +238,14 @@ body {
 .about-section .container .content-container .tap-names-container {
     justify-content: space-around;
     flex-wrap: nowrap;
+    gap: 10vw;
     margin-bottom: max(5vw, 5vh);
 }
 
 .about-section .container .content-container .tap-names-container .tap-name {
     position: relative;
     text-align: center;
-    font-size: min(6vw, 4vh);
+    font-size: clamp(3vh, 32px, 4vw);
     cursor: pointer;
 }
 
@@ -292,7 +294,7 @@ body {
 
 .about-section .container .content-container .tap-content-container .tap-content.clicked-tap-content ul li {
     margin-bottom: min(5vw, 3vh);
-    font-size: min(5vw, 3vh);
+    font-size: clamp(2vh, 32px, 4vw);
     line-height: min(8vw, 5vh);
     transform: translateX(100vw);
     animation: 1s ease-out 1 forwards slide-left;
@@ -313,7 +315,7 @@ body {
 
 .about-section .container .content-container .tap-content-container .tap-content.clicked-tap-content ul li span {
     font-weight: bold;
-    font-size: min(5.5vw, 3.5vh);
+    font-size: clamp(2.5vh, 32px, 4.5vw);
 }
 
 .about-section .container .content-container .taps-stamp-container {
@@ -405,13 +407,13 @@ body {
 
 .about-section .container .content-container .taps-stamp-container .tap-stamp .stamp-background .name {
     text-align: center;
-    font-size: min(5vw, 4vh);
+    font-size: min(4vw, 4vh);
     margin-bottom: min(1vw, 1vh);
 }
 
 .about-section .container .content-container .taps-stamp-container .tap-stamp .stamp-background .major {
     text-align: center;
-    font-size: min(1.5vw, 2vh);
+    font-size: min(2vw, 2vh);
 }
 
 /* ******************************Services Section****************************** */
@@ -609,15 +611,15 @@ body {
 
 .portfolio-section .container .cards-container .card-holder {
     position: relative;
-    width: min(80vw, 50vh);
-    height: min(45vw, 28vh);
+    width: clamp(45vh, 250px, 80vw);
+    height: clamp(25vh, 150px, 45vw);
     cursor: pointer;
     perspective: 1000px;
 }
 
 .portfolio-section .container .cards-container .card-holder:nth-child(even) {
-    height: min(80vw, 50vh);
-    width: min(45vw, 28vh);
+    width: clamp(25vh, 150px, 45vw);
+    height: clamp(45vh, 250px, 80vw);
 }
 
 .portfolio-section .container .cards-container .card-holder .portfolio-card {
@@ -652,12 +654,7 @@ body {
 
 .portfolio-section .container .cards-container .card-holder .front-face .title {
     position: relative;
-    font-size: min(8vw, 5vh);
-}
-
-.portfolio-section .container .cards-container .card-holder:nth-child(even) .front-face .title {
-    position: relative;
-    font-size: min(10vw, 5vh);
+    font-size: min(8vw, 4.5vh);
 }
 
 .portfolio-section .container .cards-container .card-holder .front-face .title::after {
