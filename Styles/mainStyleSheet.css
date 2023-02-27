@@ -787,8 +787,12 @@ body {
     
     content: var(--content-variable);
     position: absolute;
-    top: 0px;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
     color: transparent;
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: black;
