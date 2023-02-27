@@ -112,7 +112,7 @@ function loadElements(elementType, img_counter) {
                 new_paper_front.innerHTML = paper_content;
             }
             else {
-                paper_content = `<video class="content" autoplay loop muted>
+                paper_content = `<video class="content" autoplay playsinline loop muted>
                 <source class="content" src="Images/Portfolio/${video_type}${i}.mp4" type="video/mp4">
                 Your browser does not support the video tag.
                 </video>`;
