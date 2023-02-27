@@ -1,4 +1,5 @@
 :root {
+    
     --main-color: #323232;
     --secondary-color: #4D453D;
     --third-color: #BDA28F;
@@ -21,14 +22,16 @@
     /* Removing the blue highlight when touching/pressing objects */
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
-    -webkit-user-select: none;
     -khtml-user-select: none;
-    -moz-user-select: none;
+    /* Disable Text Selection 1:Safari 2:IE 10 and IE 11 3:FireFox 4:Standard syntax*/
+    -webkit-user-select: none;
     -ms-user-select: none;
+    -moz-user-select: none;
     user-select: none;
 }
 
 .flex {
+    
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -36,11 +39,13 @@
 }
 
 body {
+    
     direction: rtl;
     overscroll-behavior-inline: contain;
 }
 
 body main {
+    
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -49,6 +54,7 @@ body main {
 }
 
 body main .container {
+    
     width: 95%;
     display: flex;
     flex-direction: column;
@@ -69,20 +75,38 @@ body main .horizontal-container {
 }
 
 .book .horizontal-book-container {
+    
     position: relative;
-    width: min(80vw, 80vh);
-    height: min(45vw, 45vh);
+    width: 304px;
+    height: 171px;
 }
 
 .book .vertical-book-container {
+    
     position: relative;
-    width: min(45vw, 34vh);
-    height: min(80vw, 60vh);
+    width: 171px;
+    height: 304px;
+}
 
+@media (min-width: 768px) {
+
+    .book .horizontal-book-container {
+        
+        position: relative;
+        width: 560px;
+        height: 315px;
+    }
+
+    .book .vertical-book-container {
+        
+        width: 288px;
+        height: 512px;
+    }
 }
 
 .book .book-container .paper,
 .book .book-container .back-cover {
+    
     position: absolute;
     width: 100%;
     height: 100%;
@@ -90,7 +114,8 @@ body main .horizontal-container {
 }
 
 .book .horizontal-book-container .paper {
-    top: 30%;
+    
+    top: 10%;
     left: 0;
     border-radius: 0 0 min(3vw, 2vh) min(3vw, 2vh);
     cursor: pointer;
@@ -100,6 +125,7 @@ body main .horizontal-container {
 }
 
 .book .vertical-book-container .paper {
+    
     top: -5%;
     left: 0;
     border-radius: min(3vw, 2vh) 0 0 min(3vw, 2vh);
@@ -110,13 +136,15 @@ body main .horizontal-container {
 }
 
 .book .book-container .back-cover {
-    top: 30%;
+    
+    top: 10%;
     left: 0;
     border-radius: 0 0 min(3vw, 2vh) min(3vw, 2vh);
     background: url("../Images/mainBackground.jpg"), var(--main-color);
 }
 
 .book .vertical-book-container .back-cover {
+    
     top: -5%;
     left: 0;
     border-radius: min(3vw, 2vh) 0 0 min(3vw, 2vh);
@@ -136,6 +164,7 @@ body main .horizontal-container {
 
 .book .book-container .paper .front-page,
 .book .book-container .paper .back-page {
+    
     position: absolute;
     top: 0;
     left: 0;
@@ -153,12 +182,14 @@ body main .horizontal-container {
 }
 
 .book .book-container .paper .front-page {
+    
     background: url("../Images/mainBackground.jpg"), var(--main-color);
     z-index: 1;
     backface-visibility: hidden;
 }
 
 .book .book-container .paper .back-page {
+    
     background: url("../Images/fourthBackground.jpg"), var(--fourth-color);
     z-index: 0;
 }
@@ -169,6 +200,7 @@ body main .horizontal-container {
 
 .book .horizontal-book-container .paper .front-page .content,
 .book .horizontal-book-container .paper .back-page .content {
+    
     width: 95%;
     height: 90%;
     border-radius: 0 0 min(3vw, 2vh) min(3vw, 2vh);
@@ -176,25 +208,33 @@ body main .horizontal-container {
 
 .book .vertical-book-container .paper .front-page .content,
 .book .vertical-book-container .paper .back-page .content {
+    
     width: 90%;
     height: 95%;
     border-radius: min(3vw, 2vh) 0 0 min(3vw, 2vh);
 }
 
 .book .book-container .front-page .title {
+    
     mix-blend-mode: difference;
     position: relative;
 }
 
-.book .horizontal-book-container .front-page .title {
-    font-size: min(10vw, 10vh);
+.book .horizontal-book-container .front-page .title,
+.book .vertical-book-container .front-page .title {
+    font-size: 32px;
 }
 
-.book .vertical-book-container .front-page .title {
-    font-size: min(8vw, 6vh);
+@media (min-width: 768px) {
+
+    .book .horizontal-book-container .front-page .title,
+    .book .vertical-book-container .front-page .title {
+        font-size: 48px;
+    }
 }
 
 .book .book-container .front-page .title::after {
+    
     content: var(--content-variable);
     position: absolute;
     top: 0px;
@@ -208,6 +248,7 @@ body main .horizontal-container {
 /* ******************************Scroll IMGs Bar****************************** */
 
 .scroll-img-bar {
+    
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -215,6 +256,7 @@ body main .horizontal-container {
 }
 
 .scroll-img-bar .samples {
+    
     display: flex;
     gap: 2vw;
     overflow-x: auto;
@@ -222,8 +264,7 @@ body main .horizontal-container {
     overscroll-behavior-inline: contain;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem 0;
     box-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, 0.9),
         inset -10px 0 10px -10px rgba(0, 0, 0, 0.9);
 
@@ -233,37 +274,61 @@ body main .horizontal-container {
     display: none;
 }
 
-.scroll-img-bar .samples img {
-    width: min(35vw, 18vh);
+.scroll-img-bar .samples .sample.horizontal-img {
+    
+    width: 150px;
     background: url("../Images/mainBackground.jpg"), var(--main-color);
     padding: 5px;
     cursor: pointer;
 }
 
+.scroll-img-bar .samples .sample.vertical-img {
+    width: 75px;
+}
+
+@media (min-width: 768px) {
+    .scroll-img-bar .samples .sample.horizontal-img {
+        width: 250px;
+    }
+
+    .scroll-img-bar .samples .sample.vertical-img {
+        width: 120px;
+    }
+}
+
 .scroll-img-bar .before-btn {
+    
     padding-right: 0.5rem;
     transform: rotate(180deg);
 }
 
 .scroll-img-bar .after-btn {
+    
     padding-right: 0.5rem;
     margin-top: -0.9rem;
 }
 
 .scroll-img-bar .before-btn div,
 .scroll-img-bar .after-btn div {
+    
     position: relative;
-    letter-spacing: -8px;
     color: #825d43;
     font-weight: bold;
     font-family: 'Solitreo', cursive;
-    font-size: min(10vw, 5vh);
+    font-size: 32px;
+    letter-spacing: -8px;
     cursor: pointer;
     transition: transform 1s;
-    /* Disable Text Selection 1:Safari 2:IE 10 and IE 11 3:Standard syntax*/
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+}
+
+@media (min-width: 768px) {
+
+    .scroll-img-bar .before-btn div,
+    .scroll-img-bar .after-btn div {
+        
+        font-size: 60px;
+        letter-spacing: -16px;
+    }
 }
 
 .scroll-img-bar .before-btn:hover div {
@@ -276,6 +341,7 @@ body main .horizontal-container {
 
 .scroll-img-bar .before-btn span::after,
 .scroll-img-bar .after-btn span::after {
+    
     content: var(--direction);
     position: absolute;
     top: 0px;
@@ -297,3 +363,4 @@ body main .horizontal-container {
         transform: translateX(-5px);
     }
 }
+/* ******************************END****************************** */

@@ -12,6 +12,7 @@ function loadElements(elementType, img_counter) {
     let video_type = "";
     let book_name = "";
     let index_num = img_counter; //For arranging pages
+    let sample_direction = "";
 
     switch (elementType) {
         case "certificate":
@@ -19,6 +20,7 @@ function loadElements(elementType, img_counter) {
             content_type = "img";
             img_type = "certificateEx";
             book_name = "شهادات";
+            sample_direction = "horizontal";
             potrtfolio_container.classList.add("horizontal-container");
             book_container.classList.add("horizontal-book-container");
             break;
@@ -28,6 +30,7 @@ function loadElements(elementType, img_counter) {
             content_type = "img";
             img_type = "cvEx";
             book_name = "سيرة ذاتية";
+            sample_direction = "vertical";
             potrtfolio_container.classList.add("vertical-container");
             book_container.classList.add("vertical-book-container");
             break;
@@ -38,6 +41,7 @@ function loadElements(elementType, img_counter) {
             img_type = "powerpoint";
             video_type = "powerpointVideo";
             book_name = "بوربوينت";
+            sample_direction = "horizontal";
             potrtfolio_container.classList.add("horizontal-container");
             book_container.classList.add("horizontal-book-container");
             break;
@@ -47,6 +51,7 @@ function loadElements(elementType, img_counter) {
             content_type = "img";
             img_type = "infographicEx";
             book_name = "انفوجرافيك";
+            sample_direction = "vertical";
             potrtfolio_container.classList.add("vertical-container");
             book_container.classList.add("vertical-book-container");
             break;
@@ -57,6 +62,7 @@ function loadElements(elementType, img_counter) {
             img_type = "interactivePowerpoint";
             video_type = "interactivePowerpointVideo";
             book_name = "عروض تفاعلية";
+            sample_direction = "horizontal";
             potrtfolio_container.classList.add("horizontal-container");
             book_container.classList.add("horizontal-book-container");
             break;
@@ -66,6 +72,7 @@ function loadElements(elementType, img_counter) {
             content_type = "img";
             img_type = "graphicDesign";
             book_name = "تصاميم جرافيك";
+            sample_direction = "vertical";
             potrtfolio_container.classList.add("vertical-container");
             book_container.classList.add("vertical-book-container");
             break;
@@ -76,6 +83,7 @@ function loadElements(elementType, img_counter) {
             img_type = "wordTemplate";
             video_type = "wordTemplateVideo";
             book_name = "قوالب وورد";
+            sample_direction = "horizontal";
             potrtfolio_container.classList.add("horizontal-container");
             book_container.classList.add("horizontal-book-container");
             break;
@@ -127,6 +135,11 @@ function loadElements(elementType, img_counter) {
             img2.id = `sample${i}`;
             img2.src = `Images/Portfolio/${img_type}${i}.jpg`;
             img2.classList.add("sample");
+            if (sample_direction === "horizontal") {
+                img2.classList.add("horizontal-img");
+            } else {
+                img2.classList.add("vertical-img");
+            }
             samples_container.appendChild(img2);
         }
     }
@@ -280,27 +293,24 @@ right_arrow.addEventListener("click", () => {
 
 ////////////////////////////////////////////////////
 // Controlling the appearance of before and after buttons
-// let rr = document.querySelector(".scroll-img-bar");
-// function beforeAndAfterBtns() {
-//     let content_width = 0;
-//     samples.forEach(sample => {
-//         let width = getComputedStyle(sample).getPropertyValue("width");
-//         console.log("css width " + width);
-//         console.log("clientWidth " + sample.clientWidth);
-//         console.log("scrollWidth " + sample.scrollWidth);
-//         console.log("scroll " + sample.scrollLeft);
-//         width = width.substring(0, width.length - 2);
-//         content_width += +width;
-//     });
-//     console.log(getComputedStyle(samples_bar).getPropertyValue("width"));
-//     console.log("clientWidth " + samples_bar.clientWidth);
-//     console.log("scrollWidth " + samples_bar.scrollWidth);
-//     console.log(samples_bar.clientWidth < samples_bar.scrollWidth);
-//     console.log("scroll " + samples_bar.scrollLeft)
-//     // console.log(getComputedStyle(rr).getPropertyValue("width"));
-//     console.log(content_width);
-//     // console.log(window.innerWidth);
-//     console.log(getComputedStyle(samples_bar).getPropertyValue("overflow"));
-// }
+let imgs_container = document.querySelector(".samples");
+function beforeAndAfterBtns() {
 
-// beforeAndAfterBtns();
+    let imgs_container_CW = imgs_container.clientWidth;
+    let imgs_container_SW = 0;
+    //the delay to get the correct scroll width after uploading all document elements.
+    setTimeout(() => {
+        imgs_container_SW = imgs_container.scrollWidth;
+
+        if(imgs_container_SW > imgs_container_CW){
+            right_arrow.style.display = "block";
+            left_arrow.style.display = "block";
+        }else{
+            right_arrow.style.display = "none";
+            left_arrow.style.display = "none";
+        }
+    }, 300);
+
+}
+beforeAndAfterBtns();
+window.addEventListener("resize", beforeAndAfterBtns);
