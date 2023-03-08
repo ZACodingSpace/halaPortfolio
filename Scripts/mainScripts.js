@@ -37,6 +37,16 @@ menu_icon.addEventListener("click", () => {
 
     menu.classList.toggle("opened-menu");
 })
+
+function closeNavbar() {
+    addEventListener("click", (element)=>{
+        // (fa-bars) I used this class because I couldn't reach to the parent div class (menu-icon).
+        if(!element.target.classList.contains("fa-bars")){
+            menu.classList.remove("opened-menu");
+        }
+    })
+}
+closeNavbar();
 //////////////////// Nav Section End /////////////////////
 
 //////////////////// About Section Start /////////////////////
