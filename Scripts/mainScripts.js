@@ -32,21 +32,56 @@ resizingScreen();
 
 let menu = document.querySelector(".menu");
 let menu_icon = document.querySelector(".menu-icon");
+let menu_icon_svg = document.querySelector(".fa-bars");
 
 menu_icon.addEventListener("click", () => {
 
     menu.classList.toggle("opened-menu");
 })
 
+menu_icon_svg.addEventListener("click", () => {
+
+    menu.classList.toggle("opened-menu");
+})
+
 function closeNavbar() {
-    addEventListener("click", (element)=>{
-        // (fa-bars) I used this class because I couldn't reach to the parent div class (menu-icon).
-        if(!element.target.classList.contains("fa-bars")){
+    addEventListener("click", (element) => {
+        if (!element.target.classList.contains("fa-bars") && !element.target.classList.contains("menu-icon")) {
             menu.classList.remove("opened-menu");
         }
     })
 }
 closeNavbar();
+
+let navbar = document.querySelector("nav");
+let nav_sections = document.querySelectorAll(".nav-section");
+let sections = document.querySelectorAll(".section");
+
+function scrollSection() {
+
+    let nav_size = navbar.getBoundingClientRect().height;
+    nav_sections.forEach(nav_section => {
+        nav_section.addEventListener("click", () => {
+            let nav_id = nav_section.id;
+            switch (nav_id) {
+                case "about":
+                    window.scrollBy(0, (sections[0].getBoundingClientRect().top - nav_size));
+                    break;
+                    case "services":
+                    window.scrollBy(0, (sections[1].getBoundingClientRect().top - nav_size));
+                    break;
+                    case "portfolio":
+                    window.scrollBy(0, (sections[2].getBoundingClientRect().top - nav_size));
+                    break;
+                    case "contact":
+                    window.scrollBy(0, (sections[3].getBoundingClientRect().top - nav_size));
+                    break;
+            }
+        })
+    })
+}
+
+scrollSection();
 //////////////////// Nav Section End /////////////////////
 
 //////////////////// About Section Start /////////////////////
@@ -180,7 +215,7 @@ function redirectTo() {
 
     cards_back_face.forEach(card => {
         card.addEventListener("click", () => {
-            localStorage.setItem("card_Type", card.id.substring(0, card.id.length-4));
+            localStorage.setItem("card_Type", card.id.substring(0, card.id.length - 4));
             localStorage.setItem("num_of_imgs", card.getAttribute('num-of-imgs'));
             window.location.href = "portfolio.html";
         });
@@ -190,3 +225,4 @@ function redirectTo() {
 redirectTo();
 
 //////////////////// Protfolio Section End /////////////////////
+
