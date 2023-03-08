@@ -112,7 +112,7 @@ function loadElements(elementType, img_counter) {
                 new_paper_front.innerHTML = paper_content;
             }
             else {
-                paper_content = `<video class="content" autoplay playsinline loop muted>
+                paper_content = `<video class="content" playsinline loop muted poster="Images/Portfolio/${img_type}${i}.jpg">
                 <source class="content" src="Images/Portfolio/${video_type}${i}.mp4" type="video/mp4">
                 Your browser does not support the video tag.
                 </video>`;
@@ -169,9 +169,9 @@ function flipPage() {
 
             let z_index = page.id.substring(5);
             let last_z_index = getComputedStyle(page).getPropertyValue("z-index");
-
             if (page.classList.contains("flipped")) {
                 page.classList.remove("flipped");
+                playVideo(Number(z_index));
                 page.style.zIndex = papers_arrangement[page.id.substring(5)];
                 if (z_index == 1) {
                     cover_page.style.zIndex = papers_arrangement[0];
@@ -184,6 +184,7 @@ function flipPage() {
                 }
             } else {
                 page.classList.add("flipped");
+                playVideo(Number(z_index) + 1);
                 if (book_direction.classList.contains("vertical-book-container")) {
                     pages.forEach(e => {
                         e.style.left = "-50%";
@@ -213,7 +214,7 @@ samples.forEach(sample => {
     sample.addEventListener("click", () => {
         let sample_id = sample.id.substring(6);
         let last_flipped_page = -1;
-
+        playVideo(Number(sample_id));
         pages.forEach(page => {
             if (page.classList.contains("flipped")) {
                 last_flipped_page = page.id.substring(5);
@@ -264,6 +265,7 @@ function flipForward(page_Number) {
             cover_page.style.zIndex = 0;
         }
     }
+
 }
 
 function flipBackward(page_Number) {
@@ -302,10 +304,10 @@ function beforeAndAfterBtns() {
     setTimeout(() => {
         imgs_container_SW = imgs_container.scrollWidth;
 
-        if(imgs_container_SW > imgs_container_CW){
+        if (imgs_container_SW > imgs_container_CW) {
             right_arrow.style.display = "block";
             left_arrow.style.display = "block";
-        }else{
+        } else {
             right_arrow.style.display = "none";
             left_arrow.style.display = "none";
         }
@@ -314,3 +316,17 @@ function beforeAndAfterBtns() {
 }
 beforeAndAfterBtns();
 window.addEventListener("resize", beforeAndAfterBtns);
+
+////////////////////////////////////////////////////
+
+
+function playVideo(page_id) {
+
+    if (page_id < pages.length && pages[page_id].contains(pages[page_id].querySelector("video"))) {
+        for (let i = 1; i < pages.length; i++) {
+            let video = pages[i].querySelector("video");
+            video.pause();
+        }
+        pages[page_id].querySelector("video").play();
+    }
+}
